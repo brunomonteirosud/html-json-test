@@ -5,11 +5,6 @@
 .header-bar h1 {
   font-size: 32px;
 }
-.header-bar .filter-select {
-  display: flex;
-  justify-content: flex-end;
-  align-content: center;
-}
 
 .products-display .product-card {
   display: flex;
