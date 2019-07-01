@@ -1,0 +1,18 @@
+.header-bar {
+  background-color: #d6eff0;
+  padding: 5px;
+}
+.header-bar h1 {
+  font-size: 40px;
+}
+.header-bar .filter-select {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+}
+
+.products-display {
+  border: 1px solid #ccc;
+}
+
+/*# sourceMappingURL=main.css.map */
