@@ -7,7 +7,7 @@ $(document).ready(() => {
     $.ajax({
         url: "https://api.jsonbin.io/b/5cae9a54fb42337645ebcad3",
         success: (data) => {
-            // Clean Code principle: Separation of Concerns
+            // Clean Code principle: Single Level of Abstraction
             // This success function is only responsible for receiving the loaded data and passing it forward
             loadedProducts = data;
             appendProducts(data);
