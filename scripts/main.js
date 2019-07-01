@@ -3,22 +3,45 @@ $(document).ready(function(){
     $.ajax({
         url: "https://api.jsonbin.io/b/5cae9a54fb42337645ebcad3",
         success: function(data) {
-            console.log("data", data);
-            // <div class="col-12 col-sm-6 col-md-3 p-0">
-            //     <div class="product-card">
-            //         <figure>
-            //             <img class="img-fluid" src="./images/products/product-1.jpg">
-            //         </figure>
-            //         <span class="tag exclusive">Exclusive</span>
-            //         <div class="product-info">
-            //             <span class="name">Product name</span>
-            //             <span class="price">$15.00</span>
-            //         </div>
-            //     </div>
-            // </div>
+            // Clear product display block
+            $("#productsDisplay").html("");
+
+            // Process JSON data to format it in correct HTML template
+            var productCards = data.map(function(product){
+                return(`
+                    <div class="col-12 col-md-6 col-lg-3 p-0">
+                        <div class="product-card">
+                            <figure>
+                                <img class="img-fluid" src="./images/products/${product.productImage}">
+                            </figure>
+                            <div class="tag">
+                                ${product.isSale ? '<span class="sale">Sale</span>' : ''}
+                                ${product.isExclusive ? '<span class="exclusive">Exclusive</span>' : ''}
+                            </div>
+                            <div class="product-info">
+                                <span class="name">${product.productName}</span>
+                                <span class="price">${product.price}</span>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            });
+
+            // Append formatted HTML
+            $("#productsDisplay").append(productCards);
+            
         },
         error: function(error) {
-            console.log("error", error.responseJSON.message);
+            // Displays error message if data was not loaded
+            $("#productsDisplay").html(`
+                <div class="alert alert-danger w-100" role="alert">
+                    <p>
+                        <span>Could not load data from server. Please check your connection and try again.</span>
+                        <br>
+                        <span>Error Message: <strong>${error.responseJSON.message || "No message"}</strong></span>
+                    </p>
+                </div>
+            `);
         }
     });
 });
