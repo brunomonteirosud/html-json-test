@@ -17,9 +17,11 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="filter-select">
-                            <select>
-                                <option default>Filter by size</option>
-                            </select>
+                            <div class="form-group">
+                                <select id="sizeFilter" class="form-control" onchange="filterBySize(event)">
+                                    <option>Loading...</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
